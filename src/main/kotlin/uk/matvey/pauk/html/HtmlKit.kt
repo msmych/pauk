@@ -1,4 +1,4 @@
-package uk.matvey.pauk.ktor
+package uk.matvey.pauk.html
 
 import kotlinx.html.HEAD
 import kotlinx.html.LinkRel

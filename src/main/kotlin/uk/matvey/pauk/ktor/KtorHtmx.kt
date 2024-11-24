@@ -8,6 +8,8 @@ import kotlinx.html.HtmlBlockTag
 import kotlinx.html.ScriptCrossorigin
 import kotlinx.html.script
 import uk.matvey.pauk.htmx.Htmx
+import uk.matvey.pauk.htmx.Htmx.Attribute.HX_BOOST
+import uk.matvey.pauk.htmx.Htmx.Attribute.HX_CONFIRM
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_DELETE
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_EXT
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_GET
@@ -17,6 +19,7 @@ import uk.matvey.pauk.htmx.Htmx.Attribute.HX_POST
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_PUSH_URL
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_PUT
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_SWAP
+import uk.matvey.pauk.htmx.Htmx.Attribute.HX_SWAP_OOB
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TARGET
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TRIGGER
 import uk.matvey.pauk.htmx.Htmx.INTEGRITY
@@ -103,8 +106,20 @@ object KtorHtmx {
         attributes[HX_SWAP] = swap
     }
 
+    fun HtmlBlockTag.hxSwapOob() {
+        attributes[HX_SWAP_OOB] = "true"
+    }
+
     fun HtmlBlockTag.hxTrigger(trigger: String) {
         attributes[HX_TRIGGER] = trigger
+    }
+
+    fun HtmlBlockTag.hxBoost(boost: Boolean = true) {
+        attributes[HX_BOOST] = boost.toString()
+    }
+
+    fun HtmlBlockTag.hxConfirm(message: String) {
+        attributes[HX_CONFIRM] = message
     }
 
     fun HtmlBlockTag.hxIndicator(indicator: String) {

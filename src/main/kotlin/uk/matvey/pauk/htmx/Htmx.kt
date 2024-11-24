@@ -53,9 +53,24 @@ object Htmx {
         const val HX_SWAP = "hx-swap"
 
         /**
+         * [hx-swap-oob](https://htmx.org/attributes/hx-swap-oob/)
+         */
+        const val HX_SWAP_OOB = "hx-swap-oob"
+
+        /**
          * [hx-trigger](https://htmx.org/attributes/hx-trigger/)
          */
         const val HX_TRIGGER = "hx-trigger"
+
+        /**
+         * [hx-boost](https://htmx.org/attributes/hx-boost/)
+         */
+        const val HX_BOOST = "hx-boost"
+
+        /**
+         * [hx-confirm](https://htmx.org/attributes/hx-confirm/)
+         */
+        const val HX_CONFIRM = "hx-confirm"
 
         /**
          * [hx-indicator](https://htmx.org/attributes/hx-indicator/)
@@ -93,6 +108,21 @@ object Htmx {
          * [HX-Redirect](https://htmx.org/headers/hx-redirect/)
          */
         const val HX_REDIRECT = "HX-Redirect"
+    }
+
+    /**
+     * [hx-swap](https://htmx.org/attributes/hx-swap/)
+     */
+    object Swap {
+        const val innerHTML = "innerHTML"
+        const val outerHTML = "outerHTML"
+        const val textContent = "textContent"
+        const val beforebegin = "beforebegin"
+        const val afterbegin = "afterbegin"
+        const val beforeend = "beforeend"
+        const val afterend = "afterend"
+        const val delete = "delete"
+        const val none = "none"
     }
 
     /**

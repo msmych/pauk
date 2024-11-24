@@ -41,10 +41,10 @@ dependencies {
     api("io.ktor:ktor-network-tls-certificates:$ktorVersion")
     api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     api("io.ktor:ktor-server-auth:$ktorVersion")
+    api("io.ktor:ktor-server-call-logging:$ktorVersion")
     api("io.ktor:ktor-server-core:$ktorVersion")
     api("io.ktor:ktor-server-html-builder:$ktorVersion")
     api("io.ktor:ktor-server-netty:$ktorVersion")
-    api("io.ktor:ktor-server-sse:$ktorVersion")
     api("io.ktor:ktor-server-status-pages:$ktorVersion")
     api("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
 
@@ -79,7 +79,7 @@ publishing {
 
             pom {
                 name = "Pauk"
-                description = "Kotlin HTTP utilities"
+                description = "Kotlin web utilities"
                 url = "https://github.com/msmych/pauk"
 
                 licenses {
