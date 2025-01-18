@@ -78,6 +78,16 @@ object Htmx {
         const val HX_INDICATOR = "hx-indicator"
 
         /**
+         * [hx-include](https://htmx.org/attributes/hx-include/)
+         */
+        const val HX_INCLUDE = "hx-include"
+
+        /**
+         * [hx-vals](https://htmx.org/attributes/hx-vals/)
+         */
+        const val HX_VALS = "hx-vals"
+
+        /**
          * [hx-ext](https://htmx.org/attributes/hx-ext/)
          */
         const val HX_EXT = "hx-ext"
@@ -92,7 +102,10 @@ object Htmx {
      * [Request Headers](https://htmx.org/reference/#request_headers)
      */
     object RequestHeader {
+
         const val HX_REQUEST = "HX-Request"
+
+        const val HX_TRIGGER = "HX-Trigger"
     }
 
     /**

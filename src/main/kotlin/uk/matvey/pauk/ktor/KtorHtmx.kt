@@ -13,6 +13,7 @@ import uk.matvey.pauk.htmx.Htmx.Attribute.HX_CONFIRM
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_DELETE
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_EXT
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_GET
+import uk.matvey.pauk.htmx.Htmx.Attribute.HX_INCLUDE
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_INDICATOR
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_PATCH
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_POST
@@ -22,6 +23,7 @@ import uk.matvey.pauk.htmx.Htmx.Attribute.HX_SWAP
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_SWAP_OOB
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TARGET
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TRIGGER
+import uk.matvey.pauk.htmx.Htmx.Attribute.HX_VALS
 import uk.matvey.pauk.htmx.Htmx.INTEGRITY
 import uk.matvey.pauk.htmx.Htmx.Sse.SSE_CONNECT
 import uk.matvey.pauk.htmx.Htmx.Sse.SSE_SWAP
@@ -39,54 +41,24 @@ object KtorHtmx {
         src = Htmx.Sse.scriptUrl(version)
     }
 
-    fun HtmlBlockTag.hxGet(
-        path: String,
-        target: String? = null,
-        swap: String? = null,
-    ) {
-        attributes[HX_GET] = path
-        target?.let { hxTarget(it) }
-        swap?.let { hxSwap(it) }
+    fun HtmlBlockTag.hxGet(resource: String) {
+        attributes[HX_GET] = resource
     }
 
-    fun HtmlBlockTag.hxPost(
-        path: String,
-        target: String? = null,
-        swap: String? = null,
-    ) {
-        attributes[HX_POST] = path
-        target?.let { hxTarget(it) }
-        swap?.let { hxSwap(it) }
+    fun HtmlBlockTag.hxPost(resource: String) {
+        attributes[HX_POST] = resource
     }
 
-    fun HtmlBlockTag.hxPut(
-        path: String,
-        target: String? = null,
-        swap: String? = null,
-    ) {
-        attributes[HX_PUT] = path
-        target?.let { hxTarget(it) }
-        swap?.let { hxSwap(it) }
+    fun HtmlBlockTag.hxPut(resource: String) {
+        attributes[HX_PUT] = resource
     }
 
-    fun HtmlBlockTag.hxPatch(
-        path: String,
-        target: String? = null,
-        swap: String? = null,
-    ) {
-        attributes[HX_PATCH] = path
-        target?.let { hxTarget(it) }
-        swap?.let { hxSwap(it) }
+    fun HtmlBlockTag.hxPatch(resource: String) {
+        attributes[HX_PATCH] = resource
     }
 
-    fun HtmlBlockTag.hxDelete(
-        path: String,
-        target: String? = null,
-        swap: String? = null,
-    ) {
-        attributes[HX_DELETE] = path
-        target?.let { hxTarget(it) }
-        swap?.let { hxSwap(it) }
+    fun HtmlBlockTag.hxDelete(resource: String) {
+        attributes[HX_DELETE] = resource
     }
 
     fun HtmlBlockTag.hxSse(
@@ -126,11 +98,21 @@ object KtorHtmx {
         attributes[HX_INDICATOR] = indicator
     }
 
+    fun HtmlBlockTag.hxInclude(include: String) {
+        attributes[HX_INCLUDE] = include
+    }
+
+    fun HtmlBlockTag.hxVals(vals: String) {
+        attributes[HX_VALS] = vals
+    }
+
     fun HtmlBlockTag.hxPushUrl(pushUrl: Boolean = true) {
         attributes[HX_PUSH_URL] = pushUrl.toString()
     }
 
     fun ApplicationCall.isHxRequest() = request.header(Htmx.RequestHeader.HX_REQUEST) == "true"
+
+    fun ApplicationCall.getHxTrigger() = request.header(Htmx.RequestHeader.HX_TRIGGER) == "true"
 
     fun ApplicationCall.setHxLocation(location: String) = response.header(Htmx.ResponseHeader.HX_LOCATION, location)
 

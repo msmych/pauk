@@ -2,9 +2,17 @@
 
 Kotlin web utilities.
 
-## Ktor
+## HtmlKit
 
-### `Resource` interface
+Include stylesheet in head:
+
+```kotlin
+head {
+    stylesheet("/style.css")
+}
+```
+
+## `Resource` interface
 
 Define your resource:
 

@@ -7,5 +7,5 @@ import kotlinx.html.link
 
 object HtmlKit {
 
-    fun HEAD.stylesheet(url: String) = link(rel = LinkRel.stylesheet, type = LinkType.textCss, href = url)
+    fun HEAD.stylesheet(href: String) = link(rel = LinkRel.stylesheet, type = LinkType.textCss, href = href)
 }
