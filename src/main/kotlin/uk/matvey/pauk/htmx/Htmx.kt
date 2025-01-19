@@ -5,8 +5,8 @@ package uk.matvey.pauk.htmx
  */
 object Htmx {
 
-    const val VERSION = "2.0.3"
-    const val INTEGRITY = "sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq"
+    const val VERSION = "2.0.4"
+    const val INTEGRITY = "sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+"
 
     fun scriptUrl(version: String = VERSION) = "https://unpkg.com/htmx.org@$version"
 
@@ -56,6 +56,11 @@ object Htmx {
          * [hx-swap-oob](https://htmx.org/attributes/hx-swap-oob/)
          */
         const val HX_SWAP_OOB = "hx-swap-oob"
+
+        /**
+         * [hx-sync](https://htmx.org/attributes/hx-sync/)
+         */
+        const val HX_SYNC = "hx-sync"
 
         /**
          * [hx-trigger](https://htmx.org/attributes/hx-trigger/)
@@ -121,6 +126,15 @@ object Htmx {
          * [HX-Redirect](https://htmx.org/headers/hx-redirect/)
          */
         const val HX_REDIRECT = "HX-Redirect"
+
+        /**
+         * [HX-Trigger](https://htmx.org/headers/hx-trigger/)
+         */
+        const val HX_TRIGGER = "HX-Trigger"
+
+        const val HX_TRIGGER_AFTER_SETTLE = "HX-Trigger-After-Settle"
+
+        const val HX_TRIGGER_AFTER_SWAP = "HX-Trigger-After-Swap"
     }
 
     /**

@@ -1,7 +1,7 @@
 plugins {
     `maven-publish`
-    kotlin("jvm") version "2.0.21"
-    kotlin("plugin.serialization") version "2.0.21"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 group = "uk.matvey"
@@ -45,12 +45,15 @@ dependencies {
     api("io.ktor:ktor-server-core:$ktorVersion")
     api("io.ktor:ktor-server-html-builder:$ktorVersion")
     api("io.ktor:ktor-server-netty:$ktorVersion")
+    api("io.ktor:ktor-server-sse-jvm:$ktorVersion")
     api("io.ktor:ktor-server-status-pages:$ktorVersion")
-    api("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
 
     api("io.ktor:ktor-client-cio:$ktorVersion")
     api("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     api("io.ktor:ktor-client-core:$ktorVersion")
+    api("io.ktor:ktor-client-logging:$ktorVersion")
+
+    api("org.jetbrains.kotlin-wrappers:kotlin-css:$kotlinCssVersion")
 
     api("com.auth0:java-jwt:$jwtVersion")
 
