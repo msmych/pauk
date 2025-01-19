@@ -7,6 +7,10 @@ import kotlinx.html.HEAD
 import kotlinx.html.HtmlBlockTag
 import kotlinx.html.ScriptCrossorigin
 import kotlinx.html.script
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.JsonObjectBuilder
+import kotlinx.serialization.json.buildJsonObject
+import uk.matvey.kit.json.JsonKit.JSON
 import uk.matvey.pauk.htmx.Htmx
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_BOOST
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_CONFIRM
@@ -25,6 +29,8 @@ import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TARGET
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_TRIGGER
 import uk.matvey.pauk.htmx.Htmx.Attribute.HX_VALS
 import uk.matvey.pauk.htmx.Htmx.INTEGRITY
+import uk.matvey.pauk.htmx.Htmx.RequestHeader
+import uk.matvey.pauk.htmx.Htmx.ResponseHeader
 import uk.matvey.pauk.htmx.Htmx.Sse.SSE_CONNECT
 import uk.matvey.pauk.htmx.Htmx.Sse.SSE_SWAP
 import uk.matvey.pauk.htmx.Htmx.VERSION
@@ -106,15 +112,17 @@ object KtorHtmx {
         attributes[HX_VALS] = vals
     }
 
+    fun HtmlBlockTag.hxVals(block: JsonObjectBuilder.() -> Unit) {
+        hxVals(JSON.encodeToString(buildJsonObject(block)))
+    }
+
     fun HtmlBlockTag.hxPushUrl(pushUrl: Boolean = true) {
         attributes[HX_PUSH_URL] = pushUrl.toString()
     }
 
-    fun ApplicationCall.isHxRequest() = request.header(Htmx.RequestHeader.HX_REQUEST) == "true"
+    fun ApplicationCall.isHxRequest() = request.header(RequestHeader.HX_REQUEST) == "true"
 
-    fun ApplicationCall.getHxTrigger() = request.header(Htmx.RequestHeader.HX_TRIGGER) == "true"
+    fun ApplicationCall.setHxLocation(location: String) = response.header(ResponseHeader.HX_LOCATION, location)
 
-    fun ApplicationCall.setHxLocation(location: String) = response.header(Htmx.ResponseHeader.HX_LOCATION, location)
-
-    fun ApplicationCall.setHxRedirect(location: String) = response.header(Htmx.ResponseHeader.HX_REDIRECT, location)
+    fun ApplicationCall.setHxRedirect(location: String) = response.header(ResponseHeader.HX_REDIRECT, location)
 }
